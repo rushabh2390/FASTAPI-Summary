@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "==0.65.1"
+uvicorn = "==0.14.0"
+motor = "==2.4.0"
+python-multipart = "*"
+"pdfminer.six" = "*"
+python-docx = "==0.8.11"
+nltk = "*"
+numpy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
