@@ -40,7 +40,7 @@ async def create_upload_file(file: UploadFile = File(...)):
                 finaltext.append(line.text)
             text = "\n".join(finaltext)
         else:
-            with open(file_location) as f:
+            with open(file_location,'r',encoding='utf8') as f:
                 text = f.read()
         probable_metadata,probable_summary = generate_metadata_summary(text)
     except IOError:
