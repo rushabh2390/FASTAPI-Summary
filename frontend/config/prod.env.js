@@ -1,5 +1,8 @@
 'use strict'
-module.exports = {
-  NODE_ENV: '"production"',
-  API_ENDPOINT: '"http://localhost:8000"'
-}
+const merge = require('webpack-merge')
+const prodEnv = require('./prod.env')
+
+module.exports = merge(prodEnv, {
+  NODE_ENV:  process.env.NODE_ENV || "production",
+  API_ENDPOINT: process.env.API_ENDPOINT || "http://localhost:8000"
+})
