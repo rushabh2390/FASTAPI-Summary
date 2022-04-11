@@ -4,7 +4,9 @@ metadata:
    name: fastapi-service
    labels:
      app: fastapi-service
-      
+
+// TODO: Web
+
 spec:
    type: LoadBalancer
    ports:
