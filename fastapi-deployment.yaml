@@ -25,7 +25,11 @@ spec:
         
 
 ---
-TODO: Frontend
+metadata:
+  name: frontend-deployment
+  namespace: rushabh2390
+  labels:
+    app: frontend-deployment
 spec:
   replicas: 1
   selector:
@@ -45,3 +49,6 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 80 
+          env:
+          - name: API_ENDPOINT
+            value: http://localhost:8000
