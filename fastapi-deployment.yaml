@@ -51,4 +51,4 @@ spec:
             - containerPort: 80 
           env:
           - name: API_ENDPOINT
-            value: http://localhost:8000
+            value:  fastapi-service.rushabh2390.svc.cluster.loca
