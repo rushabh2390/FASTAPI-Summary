@@ -15,12 +15,13 @@ spec:
       name: fastapi-pod
       labels:
         app: fastapi-pod
-    containers:
-      - name: fast-api-summary
-        image: rdddocker/backend
-        imagePullPolicy: Never
-        ports:
-          - containerPort: 8000
+    spec:
+      containers:
+        - name: fast-api-summary
+          image: rdddocker/backend
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
         
 
 ---
