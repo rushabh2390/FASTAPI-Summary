@@ -3,9 +3,7 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
-RUN apk add --update curl && \
-    rm -rf /var/cache/apk/*
+RUN npm install -g npm@8.6.0
 COPY . .
 RUN npm run build
 
