@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fastapi-deployment
-  namespace: rushabh2390
   labels:
     app: fastapi-deployment
 spec:
@@ -21,13 +20,14 @@ spec:
           image: rdddocker/backend
           imagePullPolicy: Never
           ports:
-            - containerPort: 8000
+          - containerPort: 8000
         
 
 ---
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: frontend-deployment
-  namespace: rushabh2390
   labels:
     app: frontend-deployment
 spec:
@@ -48,7 +48,7 @@ spec:
           image: rdddocker/frontend
           imagePullPolicy: Never
           ports:
-            - containerPort: 80 
+            - containerPort: 8080
           env:
           - name: API_ENDPOINT
-            value:  fastapi-service.rushabh2390.svc.cluster.loca
+            value: fastapi-service
