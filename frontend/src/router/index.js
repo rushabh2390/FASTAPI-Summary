@@ -1,15 +1,17 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import FileUpload from '@/components/FileUpload'
 
-Vue.use(Router)
+const routes = [
+  {
+    path: '/',
+    name: 'FileUpload',
+    component: FileUpload
+  },
+]
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'FileUpload',
-      component: FileUpload
-    }
-  ]
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
 })
+
+export default router

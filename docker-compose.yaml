@@ -10,6 +10,11 @@ services:
  
   frontend:
     container_name: frontend
-    build: ./frontend
+    build: 
+      context: ./frontend
+      args:
+      - VUE_APP_TITLE=Docker Application
+      - VUE_APP_API_BACKEND=http:\\localhost:8000
     ports:
       - 8080:80
+    

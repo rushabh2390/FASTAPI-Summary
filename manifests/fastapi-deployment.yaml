@@ -1,54 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi-deployment
-  labels:
-    app: fastapi-deployment
+  name: fastapi-summary
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: fastapi-pod
+      app: fastapi-summary
   template:
     metadata:
-      name: fastapi-pod
       labels:
-        app: fastapi-pod
+        app: fastapi-summary
     spec:
       containers:
-        - name: fast-api-summary
-          image: rdddocker/backend
-          imagePullPolicy: Never
-          ports:
-          - containerPort: 8000
-        
-
+      - name: fastapi-summary
+        image: rdddocker/backend
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
-  labels:
-    app: frontend-deployment
+  name: frontend-summary
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: frontend-pod
-
+      app: frontend-summary
   template:
     metadata:
-      name: frontend-pod
       labels:
-        app: frontend-pod
-
+        app: frontend-summary
     spec:
       containers:
-        - name: frontend-container
-          image: rdddocker/frontend
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 8080
-          env:
+      - name: frontend-summary
+        image: rdddocker/frontend
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        env:
           - name: API_ENDPOINT
             value: fastapi-service
+

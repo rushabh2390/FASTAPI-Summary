@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    {{ Title }}
     <file-upload></file-upload>
   </div>
 </template>
@@ -7,8 +8,13 @@
 <script>
 import FileUpload from './components/FileUpload'
 export default {
-  components: { FileUpload },
-  name: 'App'
+  components: { FileUpload},
+  name: 'App',
+  data () {
+    return {
+      Title: process.env.VUE_APP_TITLE
+    }
+  }
 }
 </script>
 

@@ -14,4 +14,4 @@ spec:
       port: 80
       targetPort: 8080
   selector:
-    app: frontend-pod
+    app: frontend-summary
