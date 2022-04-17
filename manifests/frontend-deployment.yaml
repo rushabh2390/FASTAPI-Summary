@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: rdddocker/frontend
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "1"
+        ports:
+        - containerPort: 80
+        env:
+          - name: VUE_APP_API_ENDPOINT
+            value: fastapi-service
+          - name:  VUE_APP_TITLE
+            value: Kuenates application developement
+---
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: frontend-service
+  labels:
+    app: frontend-service
+    
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    app: frontend
