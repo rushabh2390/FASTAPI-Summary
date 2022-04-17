@@ -30,14 +30,11 @@ spec:
             value: Kuenates application developement
 ---
 apiVersion: v1
-
 kind: Service
-
 metadata:
   name: frontend-service
   labels:
     app: frontend-service
-    
 spec:
   type: LoadBalancer
   ports:

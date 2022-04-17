@@ -2,19 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: fastapi
-  name: fastapi-deployment
+    app: backend
+  name: backend-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: fastapi
+      app: backend
   template:
     metadata:
       labels:
-        app: fastapi
+        app: backend
     spec:
       containers:
-      - name: fastapi
+      - name: backend
         image: rdddocker/backend
         resources:
           limits:
@@ -36,4 +37,4 @@ spec:
        port: 8000
        targetPort: 8000
    selector:
-     app: fastapi
+     app: backend
