@@ -32,7 +32,6 @@ metadata:
    labels:
      app: fastapi-service
 spec:
-   type: LoadBalancer
    ports:
      - protocol: TCP
        port: 8000
