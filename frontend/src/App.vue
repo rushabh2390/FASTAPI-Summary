@@ -12,7 +12,7 @@ export default {
   name: 'App',
   data () {
     return {
-      Title: process.env.VUE_APP_TITLE
+      Title: process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
     }
   }
 }
