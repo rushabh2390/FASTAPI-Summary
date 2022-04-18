@@ -17,6 +17,7 @@ spec:
       containers:
       - name: backend
         image: rdddocker/backend
+        imagePullPolicy: Never
         resources:
           limits:
             memory: "512Mi"
