@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: rdddocker/frontend
+        image: rdddocker/summary_frontend
         imagePullPolicy: Never
         resources:
           limits:
@@ -24,6 +24,11 @@ spec:
             cpu: "1"
         ports:
         - containerPort: 80
+        env:
+        - name: VUE_APP_API_BACKEND
+          value: fastapi-service
+        - name: VUE_APP_TITLE
+          value: kubernates runner
 ---
 apiVersion: v1
 kind: Service

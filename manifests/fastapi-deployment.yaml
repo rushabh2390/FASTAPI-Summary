@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: rdddocker/backend
+        image: rdddocker/summary_backend
         imagePullPolicy: Never
         resources:
           limits:
@@ -37,5 +37,6 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
+      nodePort: 31000
   selector:
     app: backend

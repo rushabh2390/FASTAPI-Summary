@@ -7,8 +7,8 @@ RUN npm install
 RUN apk add --update curl && \
     rm -rf /var/cache/apk/*
 COPY . .
-ARG VUE_APP_API_BACKEND=$VUE_APP_API_BACKEND
-ARG VUE_APP_TITLE=$VUE_APP_TITLE
+# ARG VUE_APP_API_BACKEND=$VUE_APP_API_BACKEND
+# ARG VUE_APP_TITLE=$VUE_APP_TITLE
 # ENV VUE_APP_TITLE="Fast Api Summary Generator"
 RUN npm run build
 
