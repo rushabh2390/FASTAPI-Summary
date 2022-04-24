@@ -1,18 +1,34 @@
-name: manifests
+name: fastapi-summary
 
 # The build section defines how to build the images of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#build
-# build:
-#   my-service:
-#     context: .
+build:
 
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_BACKEND_REGISTRY: image registry
+  #  - OKTETO_BUILD_BACKEND_REPOSITORY: image repo
+  #  - OKTETO_BUILD_BACKEND_IMAGE: image name
+  #  - OKTETO_BUILD_BACKEND_TAG: image tag
+  backend:
+    context: backend
+    dockerfile: Dockerfile
+
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_FRONTEND_REGISTRY: image registry
+  #  - OKTETO_BUILD_FRONTEND_REPOSITORY: image repo
+  #  - OKTETO_BUILD_FRONTEND_IMAGE: image name
+  #  - OKTETO_BUILD_FRONTEND_TAG: image tag
+  frontend:
+    context: frontend
+    dockerfile: Dockerfile
+    args:
+      - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
+      - VUE_APP_TITLE=okteto Application
 
 # The deploy section defines how to deploy your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#deploy
 deploy:
-  commands:
-    - name: Deploy
-      command: kubectl apply -f frontend-deployment.yaml,fastapi-deployment.yaml
+  compose: docker-compose.yaml
 
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
