@@ -5,6 +5,11 @@ name: manifests
 # build:
 #   my-service:
 #     context: .
+build:
+  backend:
+    context: backend
+  frontend:
+    context: frontend
 
 
 # The deploy section defines how to deploy your development environment
@@ -34,6 +39,7 @@ deploy:
 #       - 8080:80
 
 dev:
-  environment:
-    - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
-    - VUE_APP_TITLE=okteto Application
+  frontend:
+    environment:
+      - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
+      - VUE_APP_TITLE=okteto Application
