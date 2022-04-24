@@ -22,7 +22,7 @@ build:
     context: frontend
     dockerfile: Dockerfile
     args:
-      - VUE_APP_API_BACKEND=${OKTETO_BUILD_backend_IMAGE}
+      - VUE_APP_API_BACKEND=backend
       - VUE_APP_TITLE=okteto Application
 
 # The deploy section defines how to deploy your development environment
