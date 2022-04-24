@@ -21,9 +21,6 @@ build:
   frontend:
     context: frontend
     dockerfile: Dockerfile
-    args:
-      - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
-      - VUE_APP_TITLE=okteto Application
 
 # The deploy section defines how to deploy your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#deploy
@@ -50,3 +47,8 @@ deploy:
 #     forward:
 #       - 8080:80
 
+dev:
+  frontend:
+    environment:
+    - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
+    - VUE_APP_TITLE=okteto Application
