@@ -28,7 +28,7 @@ spec:
         - name: VUE_APP_API_BACKEND
           value: fastapi-service
         - name: VUE_APP_TITLE
-          value: kubernates runner
+          value: okteto kubernates runner
 ---
 apiVersion: v1
 kind: Service

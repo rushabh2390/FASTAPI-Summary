@@ -37,9 +37,3 @@ deploy:
 #       - name=$USER
 #     forward:
 #       - 8080:80
-
-dev:
-  frontend:
-    environment:
-      - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
-      - VUE_APP_TITLE=okteto Application
