@@ -11,7 +11,7 @@ build:
   #  - OKTETO_BUILD_BACKEND_TAG: image tag
   backend:
     context: backend
-    dockerfile: backend\Dockerfile
+    dockerfile: Dockerfile
 
   # You can use the following env vars to refer to this image in your deploy commands:
   #  - OKTETO_BUILD_FRONTEND_REGISTRY: image registry
@@ -20,7 +20,7 @@ build:
   #  - OKTETO_BUILD_FRONTEND_TAG: image tag
   frontend:
     context: frontend
-    dockerfile: frontend\Dockerfile
+    dockerfile: Dockerfile
     args:
       - VUE_APP_API_BACKEND=http:\\localhost:8000
       - VUE_APP_TITLE=Docker Application
