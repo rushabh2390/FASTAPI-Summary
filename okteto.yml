@@ -17,7 +17,7 @@ build:
 deploy:
   commands:
     - name: Deploy
-      command: kubectl apply -f frontend-deployment.yaml,fastapi-deployment.yaml
+      command: kubectl apply -f k8s.yml
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
 # dependencies:
