@@ -13,7 +13,7 @@ deploy:
   commands:
     - name: Deploy
       command: kubectl apply -f frontend-deployment.yaml,fastapi-deployment.yaml
-  environment:
+  args:
     - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
     - VUE_APP_TITLE=okteto Application
 # The dependencies section defines other git repositories to be deployed as part of your development environment
