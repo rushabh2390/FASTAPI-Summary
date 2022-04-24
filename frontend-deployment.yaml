@@ -17,7 +17,7 @@ spec:
       containers:
       - name: frontend
         image: rdddocker/summary_frontend
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         resources:
           limits:
             memory: "512Mi"
