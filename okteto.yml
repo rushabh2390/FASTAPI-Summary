@@ -10,7 +10,7 @@ name: fastapi-summary
 # The deploy section defines how to deploy your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#deploy
 deploy:
-  - kubectl apply -f k8s.yml  --namespace $NAMESPACE
+  - kubectl apply -f k8s.yml  --namespace rushabh2390
 
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
