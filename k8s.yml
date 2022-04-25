@@ -28,9 +28,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-   name: fastapi-service
-   labels:
-     app: fastapi-service
+  name: fastapi-service
+  labels:
+    app: fastapi-service
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
 spec:
   type: LoadBalancer
   ports:
@@ -79,6 +81,8 @@ metadata:
   name: frontend-service
   labels:
     app: frontend-service
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
 spec:
   type: LoadBalancer
   ports:

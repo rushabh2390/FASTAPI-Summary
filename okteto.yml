@@ -11,7 +11,7 @@ build:
   #  - OKTETO_BUILD_BACKEND_TAG: image tag
   backend:
     context: backend
-    dockerfile: Dockerfile
+    dockerfile: backend\Dockerfile
 
   # You can use the following env vars to refer to this image in your deploy commands:
   #  - OKTETO_BUILD_FRONTEND_REGISTRY: image registry
@@ -20,12 +20,12 @@ build:
   #  - OKTETO_BUILD_FRONTEND_TAG: image tag
   frontend:
     context: frontend
-    dockerfile: Dockerfile
+    dockerfile: frontend\Dockerfile
 
 # The deploy section defines how to deploy your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#deploy
-# deploy:
-#   compose: docker-compose.yaml
+deploy:
+  - kubectl apply -f k8s.yml
 
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
@@ -47,8 +47,3 @@ build:
 #     forward:
 #       - 8080:80
 
-dev:
-  frontend:
-    environment:
-    - VUE_APP_API_BACKEND=https://backend-rushabh2390.cloud.okteto.net
-    - VUE_APP_TITLE=okteto Application
