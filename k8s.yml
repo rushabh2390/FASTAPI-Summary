@@ -4,6 +4,7 @@ metadata:
   labels:
     app: backend
   name: backend-deployment
+  namespace: rushabh2390
 spec:
   replicas: 1
   selector:
@@ -49,6 +50,7 @@ metadata:
   labels:
     app: frontend
   name: frontend-deployment
+  namespace: rushabh2390
 spec:
   replicas: 1
   selector:
