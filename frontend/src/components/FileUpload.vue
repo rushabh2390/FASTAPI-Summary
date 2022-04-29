@@ -1,5 +1,6 @@
 <template>
 <div class="container" >
+  {{ title }}
   <div class="card" style="width: 100%;">
   <div class="card-header">
     <form @submit.prevent="onSubmit" enctype="multipart/form-data">
@@ -48,7 +49,7 @@
 </template>
 <script>
 import Axios from 'axios'
-Axios.defaults.baseURL = process.env.VUE_APP_API_BACKEND || "http://localhost:8000"
+
 export default {
   name: 'FileUpload',
   data () {
@@ -57,8 +58,13 @@ export default {
       message: null,
       response: null,
       metadata: null,
-      summary: null
+      summary: null,
+      title: null,
     }
+  },
+  created() {
+    this.title = config.VUE_APP_TITLE  //|| process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
+    Axios.defaults.baseURL = config.VUE_APP_API_BACKEND || process.env.VUE_APP_API_BACKEND || "http://localhost:8000"
   },
   methods: {
     async onSubmit () {

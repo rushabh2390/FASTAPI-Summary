@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    {{ Title }}
     <file-upload></file-upload>
   </div>
 </template>
@@ -9,12 +8,7 @@
 import FileUpload from './components/FileUpload'
 export default {
   components: { FileUpload},
-  name: 'App',
-  data () {
-    return {
-      Title: process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
-    }
-  }
+  name: 'App'
 }
 </script>
 
