@@ -7,6 +7,6 @@ data:
     var config = (() => {
     return {
         "VUE_APP_TITLE":"kubenates run",
-        "VUE_APP_API_BACKEND":"https://fastapi-service-rushabh2390.cloud.okteto.net:8000"
+        "VUE_APP_API_BACKEND":"https://fastapi-service-rushabh2390.cloud.okteto.net"
       };
     })();
