@@ -61,6 +61,10 @@ spec:
       labels:
         app: frontend
     spec:
+      volumes:
+      - name: config-volume
+        configMap:
+          name: okteto-frontend-configmap
       containers:
       - name: frontend
         image: rdddocker/summary_frontend
@@ -76,6 +80,10 @@ spec:
           value: fastapi-service
         - name: VUE_APP_TITLE
           value: kubernates runner
+        volumeMounts:
+          - name: config-volume
+            mountPath: /usr/share/nginx/html/static/config.js
+            subPath: config.js
 ---
 apiVersion: v1
 kind: Service
