@@ -15,12 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Build the Frontend Docker image
-      run: cd frontend && docker build . --file Dockerfile --tag  rdddocker/summary_frontend:latest
-      
-    - name: Build the Backend Docker image
-      run: cd backend && docker build . --file Dockerfile --tag  rdddocker/summary_backend:latest
-     
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
