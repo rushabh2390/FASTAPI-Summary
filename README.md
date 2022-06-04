@@ -28,7 +28,7 @@
 ### Run in Docker
 1. clone this repo
 2. Go to project in terminal   
-``` cd FAVM tutorial ```
+``` cd FASTAPI-Summary ```
 3. Run follwing command to start docker with application
 ``` docker-compose up ``` Or ``` docker-compose up -d ```
 4. Open  frontend in browser from [frontend](http://127.0.0.1:8080)

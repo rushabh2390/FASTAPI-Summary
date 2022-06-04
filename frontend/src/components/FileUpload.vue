@@ -63,7 +63,7 @@ export default {
     }
   },
   created() {
-    this.title = config.VUE_APP_TITLE  //|| process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
+    this.title = config.VUE_APP_TITLE  || process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
     Axios.defaults.baseURL = config.VUE_APP_API_BACKEND || process.env.VUE_APP_API_BACKEND || "http://localhost:8000"
   },
   methods: {
