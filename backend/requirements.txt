@@ -1,7 +1,9 @@
-fastapi==0.65.1
-uvicorn==0.14.0
+fastapi
+uvicorn
 python-multipart
 pdfminer.six
-python-docx==0.8.11
+PyPDF2
+python-docx
+pymupdf
 nltk
 numpy

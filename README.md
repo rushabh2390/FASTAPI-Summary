@@ -33,3 +33,6 @@
 ``` docker-compose up ``` Or ``` docker-compose up -d ```
 4. Open  frontend in browser from [frontend](http://127.0.0.1:8080)
 5.  You can visit fastapi docs from [backend](http://127.0.0.1:8000)
+---
+UI
+![api_demo](app_demo.jpg)

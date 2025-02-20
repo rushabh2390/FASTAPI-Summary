@@ -1,58 +1,60 @@
 <template>
-<div class="container" >
-  {{ title }}
-  <div class="card" style="width: 100%;">
-  <div class="card-header">
-    <form @submit.prevent="onSubmit" enctype="multipart/form-data">
-      <div class="row">
-          <table class="table-primary">
-            <tr>
-              <td>
-                <div class="col-md-8">
-                  <label for="formFile" class="form-label">
-                    Upload your file(docx, pdf, txt, utf only)
-                  </label>
-                  <input class="form-control-file" type="file" id="formFile" @change="onFileChange">
-                </div>
-              </td>
-              <td>
-                <div class="col-md-4">
-                  <button  class="btn btn-primary mb-2" >Submit</button>
-                </div>
-              </td>
-            </tr>
-          </table>
+  <div class="container">
+    {{ title }}
+    <div class="card" style="width: 100%;">
+      <div class="card-header">
+        <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+          <div class="row">
+            <table class="table-primary">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="col-md-8">
+                      <label for="formFile" class="form-label">
+                        Upload your file(docx, pdf, txt, utf only)
+                      </label>
+                      <input class="form-control-file" type="file" id="formFile" @change="onFileChange">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="col-md-4">
+                      <button class="btn btn-primary mb-2">Submit</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="card-body" style="text-align:justify;">
+        <div class="row">
+          <div class="col-md-12" v-if="message != null">
+            <h5> {{ message }} </h5>
+          </div>
         </div>
-    </form>
-  </div>
-    <div class="card-body">
-      <div class="row">
-      <div class="col-md-12" v-if="message!=null">
-        <h5> {{ message }} </h5>
-      </div>
-      </div>
-      <div class="row"  v-if="metadata!=null">
-        <h5 class="text-md-left">Probable Metadata</h5>
-        <div class="col-md-12">
-          <p class="text-md-left" >{{ metadata }}</p>
+        <div class="row" v-if="metadata != null">
+          <h5 class="text-md-left">Probable Metadata</h5>
+          <div class="col-md-12">
+            <p class="text-md-left">{{ metadata }}</p>
+          </div>
         </div>
-      </div>
-      <div class="row"  v-if="summary!=null">
-        <h5 class="text-md-left">Probable Summary</h5>
-        <div class="col-md-12" >
-          <p class="text-md-left" >{{ summary }}</p>
+        <div class="row" v-if="summary != null">
+          <h5 class="text-md-left">Probable Summary</h5>
+          <div class="col-md-12">
+            <p class="text-md-left">{{ summary }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 <script>
 import Axios from 'axios'
 
 export default {
   name: 'FileUpload',
-  data () {
+  data() {
     return {
       file: null,
       message: null,
@@ -63,11 +65,11 @@ export default {
     }
   },
   created() {
-    this.title = config.VUE_APP_TITLE  || process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
+    this.title = config.VUE_APP_TITLE || process.env.VUE_APP_TITLE || "MetaData & Summary Generator"
     Axios.defaults.baseURL = config.VUE_APP_API_BACKEND || process.env.VUE_APP_API_BACKEND || "http://localhost:8000"
   },
   methods: {
-    async onSubmit () {
+    async onSubmit() {
       const formData = new FormData()
       formData.append('file', this.file)
       try {
@@ -82,7 +84,7 @@ export default {
         this.summary = null
       }
     },
-    async onFileChange (e) {
+    async onFileChange(e) {
       const selectedFile = e.target.files[0]
       this.file = selectedFile
     }

@@ -7,16 +7,16 @@ import os
 import docx
 from pdfminer.high_level import extract_text
 from summarygenerator import generate_metadata_summary
-
+from filetextextracter import extract_text_from_file
 app = FastAPI()
 origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = origins,
-    allow_credentials = True,
-    allow_methods = ["*"],
-    allow_headers = ["*"],
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -26,28 +26,16 @@ async def create_upload_file(file: UploadFile = File(...)):
         os.makedirs("tmp")
     file_location = "tmp/"+file.filename
     with open(file_location, "wb+") as file_object:
-        shutil.copyfileobj(file.file, file_object) 
+        shutil.copyfileobj(file.file, file_object)
     ext = file.filename.split(".")[-1]
     error = None
     try:
-        text=""
-        if ext == "pdf":
-            text = extract_text(file_location)
-        elif ext == "docx":
-            finaltext =[]
-            doc = docx.Document(file_location) 
-            for line in doc.paragraphs:
-                finaltext.append(line.text)
-            text = "\n".join(finaltext)
-        else:
-            with open(file_location,'r',encoding='utf8') as f:
-                text = f.read()
-        probable_metadata,probable_summary = generate_metadata_summary(text)
+        text = extract_text_from_file(file_location, ext)
+        probable_metadata, probable_summary = generate_metadata_summary(text)
     except IOError:
-        error = "Could not open/read file: "+ file.filename+" "+file_location
+        error = "Could not open/read file: " + file.filename+" "+file_location
     finally:
         os.remove(file_location)
     if error is not None:
-        return {"error":error}
-    return {"probable metadata":str(probable_metadata),"probable summary":str(probable_summary)}
-    
+        return {"error": error}
+    return {"probable metadata": str(probable_metadata), "probable summary": str(probable_summary)}
